@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { LoginModalService } from 'app/core/login/login-modal.service';
 import { AccountService } from 'app/core/auth/account.service';
 import { Account } from 'app/core/user/account.model';
+import { OneSignalService } from 'app/shared/services/one-signal.service';
 
 @Component({
   selector: 'jhi-home',
@@ -14,10 +15,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   account: Account | null = null;
   authSubscription?: Subscription;
 
-  constructor(private accountService: AccountService, private loginModalService: LoginModalService) {}
+  constructor(private accountService: AccountService, private loginModalService: LoginModalService, private onesignal: OneSignalService) {}
 
   ngOnInit(): void {
     this.authSubscription = this.accountService.getAuthenticationState().subscribe(account => (this.account = account));
+    this.onesignal.init();
   }
 
   isAuthenticated(): boolean {

@@ -70,7 +70,8 @@ module.exports = (options) => ({
                 // If this URL is left empty (""), then it will be relative to the current context.
                 // If you use an API server, in `prod` mode, you will need to enable CORS
                 // (see the `jhipster.cors` common JHipster property in the `application-*.yml` configurations)
-                SERVER_API_URL: `''`
+                SERVER_API_URL: `''`,
+                ONESIGNAL_APP_ID: `'6540f916-c66a-4029-8c50-0dd666ad7c6e'`
             }
         }),
         new CopyWebpackPlugin([
@@ -80,6 +81,8 @@ module.exports = (options) => ({
             { from: './src/main/webapp/content/', to: 'content' },
             { from: './src/main/webapp/favicon.ico', to: 'favicon.ico' },
             { from: './src/main/webapp/manifest.webapp', to: 'manifest.webapp' },
+            { from: './src/main/webapp/content/js/OneSignalSDKUpdaterWorker.js', to: 'OneSignalSDKUpdaterWorker.js' },
+            { from: './src/main/webapp/content/js/OneSignalSDKWorker.js', to: 'OneSignalSDKWorker.js' },
             // jhipster-needle-add-assets-to-webpack - JHipster will add/remove third-party resources in this array
             { from: './src/main/webapp/robots.txt', to: 'robots.txt' }
         ]),
