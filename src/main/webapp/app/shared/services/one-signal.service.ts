@@ -19,19 +19,7 @@ export class OneSignalService {
 
   // Call this method to start the this.OneSignal process.
   public init(): void {
-    this.addScript((callback: any) => {
-      logger('this.OneSignal Script Loaded: ' + callback);
-      this.initOneSignal();
-    });
-  }
-
-  addScript(callback: any): void {
-    const head = this.document.getElementsByTagName('head')[0];
-    const script = this.document.createElement('script');
-    script.type = 'text/javascript';
-    script.onload = callback;
-    script.src = 'https://cdn.onesignal.com/sdks/OneSignalSDK.js';
-    head.appendChild(script);
+    this.initOneSignal();
   }
 
   initOneSignal(): void {
