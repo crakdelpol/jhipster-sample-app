@@ -34,7 +34,8 @@ export class OneSignalService {
         autoRegister: true,
         notifyButton: {
           enable: true
-        }
+        },
+        allowLocalhostAsSecureOrigin: true
       }
     ]);
     logger('this.OneSignal Initialized');
